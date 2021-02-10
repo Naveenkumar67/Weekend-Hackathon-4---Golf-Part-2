@@ -57,7 +57,7 @@ const App = ()=> {
                 position:"absolute",
             }}></div>
 		} else {
-		    return <button onClick={buttonClickHandler} >Start</button>
+		    return <button onClick={buttonClickHandler} class="start">Start</button>
 		}
     }
 
