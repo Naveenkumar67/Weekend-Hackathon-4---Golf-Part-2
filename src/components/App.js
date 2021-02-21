@@ -8,47 +8,54 @@ const App = ()=> {
     const buttonClickHandler = () =>{
              setRenderBall(true);
    }
+   const eventHandler=(event)=>{
+    switch(event.keyCode){
+        case 39:
+            setBallPosition({
+                left:ballPosition.left + 5,
+                top:ballPosition.top,
+            });
+            break;
+        case 38:
+            setBallPosition({
+                left:ballPosition.left,
+                top:ballPosition.top-5,
+                //position:"absolute",
+            });
+            break;
+        case 37:
+               setBallPosition({
+                   left:ballPosition.left-5,
+                   top:ballPosition.top,
+               });
+               break;
+        case 40:
+            setBallPosition({
+                left:ballPosition.left,
+                top:ballPosition.top+5,
+            });
+            break;
+       default:
+           setBallPosition({
+               left:ballPosition.left,
+               top:ballPosition.top,
+           });
+           break;           
+
+
+    }
+   }
    useEffect(()=>{
-     document.addEventListener("keydown",(event)=>{
-         //console.log(event.keyCode);
-         switch(event.keyCode){
-             case 39:
-                 setBallPosition({
-                     left:ballPosition.left + 5,
-                     top:ballPosition.top,
-                 });
-                 break;
-             case 38:
-                 setBallPosition({
-                     left:ballPosition.left,
-                     top:ballPosition.top-5,
-                     //position:"absolute",
-                 });
-                 break;
-             case 37:
-                    setBallPosition({
-                        left:ballPosition.left-5,
-                        top:ballPosition.top,
-                    });
-                    break;
-             case 40:
-                 setBallPosition({
-                     left:ballPosition.left,
-                     top:ballPosition.top+5,
-                 });
-                 break;
-            default:
-                setBallPosition({
-                    left:ballPosition.left,
-                    top:ballPosition.top,
-                });
-                break;           
-
-
-         }
-     })
+    document.addEventListener("keydown",eventHandler);
+    return ()=>{
+        document.removeEventListener("keydown",eventHandler);
+    }
+    
 },[ballPosition]);
-    const renderBallOrButton = () => {
+    
+
+
+const renderBallOrButton = () => {
 		if (renderBall) {
 		    return <div className="ball" 
             style={{
@@ -57,7 +64,7 @@ const App = ()=> {
                 position:"absolute",
             }}></div>
 		} else {
-		    return <button onClick={buttonClickHandler} class="start">Start</button>
+		    return <button onClick={buttonClickHandler} >Click For One Ball</button>
 		}
     }
 
