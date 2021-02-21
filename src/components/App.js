@@ -52,7 +52,16 @@ const App = ()=> {
     }
     
 },[ballPosition]);
-    
+ 
+const reset=()=>{
+    let b=renderBall;
+    b=false;
+    setRenderBall(b);
+    let c=ballPosition;
+    c.left=0;
+    c.top=0;
+    setBallPosition(c);
+}   
 
 
 const renderBallOrButton = () => {
@@ -67,15 +76,7 @@ const renderBallOrButton = () => {
 		    return <button onClick={buttonClickHandler} >Click For One Ball</button>
 		}
 }
-const reset=()=>{
-    let b=renderBall;
-    b=false;
-    setRenderBall(b);
-    let c=ballPosition;
-    c.left=0;
-    c.top=0;
-    setBallPosition(c);
-}
+
    
 
 
