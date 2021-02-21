@@ -66,16 +66,26 @@ const renderBallOrButton = () => {
 		} else {
 		    return <button onClick={buttonClickHandler} >Click For One Ball</button>
 		}
-    }
+}
+const reset=()=>{
+    let b=renderBall;
+    b=false;
+    setRenderBall(b);
+    let c=ballPosition;
+    c.left=0;
+    c.top=0;
+    setBallPosition(c);
+}
+   
 
-    // bind ArrowRight keydown event
-    
 
    
         return (
             <div className="playground">
                 {renderBallOrButton()}
+                <button className="reset" onClick={reset}>Reset</button>;
             </div>
+            
         )
     
 }
